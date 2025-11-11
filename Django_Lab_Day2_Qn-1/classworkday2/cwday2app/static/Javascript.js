@@ -1,3 +1,3 @@
 function greetings(){
-            document.getElementsByTagName('h1')[0].innerHTML = 'Hello, Welcome back'
+            document.getElementsByTagName('h3')[0].innerHTML = 'Hello, Welcome back'
         }
