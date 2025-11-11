@@ -1,5 +1,6 @@
 from django.urls import path
 from cwday2app import views
 urlpatterns = [
-  path('', views.greetings)
+  path('', views.home),
+  path('aboutus/', views.aboutus),
 ]
