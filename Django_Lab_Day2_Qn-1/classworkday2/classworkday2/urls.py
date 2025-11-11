@@ -1,5 +1,5 @@
 from django.urls import path
-from changeGreeting import views
+from cwday2app import views
 urlpatterns = [
-  path('', views.changeGreeting)
+  path('', views.greetings)
 ]

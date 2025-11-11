@@ -1,3 +1,3 @@
 from django.http import HttpResponse
-def changeGreeting(request):
+def greetings(request):
     return HttpResponse('Hello World')
