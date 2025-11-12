@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Contact me</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Contact Me</h1>
+    <p>If you want to reach out, send a message — I'd love to hear from you.</p>
+    <button class="btn" onclick="showThanks()">Send Message</button>
+    <p id="thanksMsg"></p>
+    <script src="{% static 'galleryapp/js/script.js' %}"></script>
+</body>
