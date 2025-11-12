@@ -1,7 +1,7 @@
-from django.urls import path
-from hwday2project import views
+from django.contrib import admin
+from django.urls import path, include
 
 urlpatterns = [
-    path('gallerypage/', views.gallerypage, name='gallery'),
-    path('contactme/', views.contactme, name='contact'),
+    path('admin/', admin.site.urls),
+    path('', include('hwday2app.urls')),  # include your app’s URLs
 ]

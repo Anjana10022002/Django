@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-def gallery(request):
+def gallerypage(request):
     return render(request, 'gallerypage.html')
 
-def contact(request):
-    return render(request, 'contactme.html')
+def contactpage(request):
+    return render(request, 'contactpage.html')

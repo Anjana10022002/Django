@@ -1,5 +1,5 @@
 {% load static %}
-<1!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Gallery Page</title>
@@ -9,17 +9,15 @@
     <h1>My Image Gallery</h1>
     <div class="gallery-row">
         <div class="gallery-item">
-            <img src="{% static 'images1.jpg' %}" alt="Image 1">
+            <img src="{% static 'images1.jpeg' %}" alt="Image 1" height="200px" width="150px">
             <div class="caption">Venice-City of water</div>
-        </div>
-
+        </div><br>
         <div class="gallery-item">
-            <img src="{% static 'images2.jpg' %}" alt="Image 2">
+            <img src="{% static 'images2.jpg' %}" alt="Image 2" height="200px" width="150px">
             <div class="caption">Santorini-The blue island</div>
-        </div>
-
+        </div><br>
         <div class="gallery-item">
-            <img src="{% static 'images3.jpg' %}" alt="Image 3">
+            <img src="{% static 'images3.jpg' %}" alt="Image 3" height="200px" width="150px">
             <div class="caption">Paris-City of light</div>
         </div>
     </div>

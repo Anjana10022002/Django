@@ -17,3 +17,7 @@ h1{
   size: 20px;
   color: red;
 }
+image {
+  width: 0.25vh;
+  height: 0.20vh;
+}
