@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    {% if students %}
+        {% for x in students %}
+            <p>Name: {{ x.Name }}</h1>
+            <p>Mark: {{ x.Marks }}</p>
+            {% if x.passed %}
+                <span class="pass">Passed</span>
+            {% else %}
+                <span class="fail">Failed</span>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>No student info found</p>
+    {% enf if %}
+</body>
+</html>

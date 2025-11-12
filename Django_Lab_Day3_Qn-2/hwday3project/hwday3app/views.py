@@ -7,3 +7,5 @@ def student_info(request):
         {'Name': 'Charlie', 'Marks': 92, 'Status': 'Pass'}, 
         {'Name': 'Eva', 'Marks': 45, 'Status': 'Fail'},
     ]
+    student = {'students': students}
+    return render(request, 'students.html', student)

@@ -1,0 +1,16 @@
+.pass {
+    color: green;
+    font-weight: bold;
+}
+.fail {
+    color: red;
+    font-weight: bold;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f6f6;
+    padding: 30px;
+}
+h1 {
+    color: #333;
+}
