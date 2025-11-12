@@ -8,9 +8,9 @@
 <body>
     {% if students %}
         {% for x in students %}
-            <p>Name: {{ x.Name }}</h1>
+            <p>Name: {{ x.Name }}</p>
             <p>Mark: {{ x.Marks }}</p>
-            {% if x.Status == pass %}
+            {% if x.Status == 'pass' %}
                 <span class="pass">Passed</span>
             {% else %}
                 <span class="fail">Failed</span>
