@@ -5,3 +5,5 @@ def gallerypage(request):
 
 def contactpage(request):
     return render(request, 'contactpage.html')
+
+
