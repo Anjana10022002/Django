@@ -5,3 +5,5 @@ urlpatterns = [
     path('gallery/', views.gallerypage, name='gallery'),
     path('contact/', views.contactpage, name='contact'),
 ]
+
+
