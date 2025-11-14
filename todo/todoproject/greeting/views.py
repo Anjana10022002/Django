@@ -11,12 +11,23 @@
 #     count = 23
 #     return render(request,'index.html',{'count':count})
 
+# from django.shortcuts import render
+# def greeting(request):
+#     if request.method == 'POST':
+#      email = request.POST.get('email')
+#      return render(request,'form-data.html',{
+#          'formData':request.POST,
+#          'email': email
+#      })
+#     return render(request,'index.html')
+
 from django.shortcuts import render
+from .forms import LoginForm
 def greeting(request):
     if request.method == 'POST':
-     email = request.POST.get('email')
-     return render(request,'form-data.html',{
-         'formData':request.POST,
-         'email': email
-     })
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            return render(request,'form-data.html',{
+                'email': form['email'].value
+            })
     return render(request,'index.html')
