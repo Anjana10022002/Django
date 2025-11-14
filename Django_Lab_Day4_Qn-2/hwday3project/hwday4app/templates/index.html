@@ -1,0 +1,20 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data Form</title>
+</head>
+<body>
+    <h1>User form</h1>
+    <form method="POST"></form>
+    {% csrf_token %}
+    <label>Enter your name: </label><br>
+    <input type="text" name="name">
+    <label>Enter your favourite color: </label>
+    <input type="text" name="color">
+    <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
