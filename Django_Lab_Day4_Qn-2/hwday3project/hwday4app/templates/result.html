@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body>
+    <h2>Hello {{ name }}, your favourite color is {{ color }}</h2>
+    <h3>Submitted form data:  </h3>
+    <ul>
+        {% for key, value in data.items %}
+            <li>{{ key }} : {{ value }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

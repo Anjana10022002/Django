@@ -1,10 +1,15 @@
 from django.shortcuts import render
 
-def userform(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        return render (request, 'user_data_form.html'),{
-            'formData' : request.POST,
-            'name' : name
-        }
-    return render(request, 'user_data_form.html')
+def input_form(request):
+    return render(request, 'index.html')
+
+def result(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        color = request.POST.get("color")
+        return render(request, "result.html", {
+            "name": name,
+            "color": color,
+            "data": request.POST
+        })
+    return render(request, "index.html")
