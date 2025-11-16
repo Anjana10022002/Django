@@ -11,4 +11,7 @@ def register(request):
     if request.method == "POST":
         form = ResourceWarning(request.POST)
         if form.is_valid():
-            name = form.
+            return render(request, "success.html", {"name": "full_name"})
+        else:
+            form = RegistrationForm()
+        return render(request, "registrationpage.html", {"form":form})
