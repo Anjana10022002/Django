@@ -5,7 +5,18 @@
     <link rel="stylesheet" type="text/css" href="{% static 'hwday5app/style.css' %}">
 </head>
 <body>
-    
+    <h1>Registration Form</h1>
+    {{ form.errors}}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <!-- <label>Full Name</label>
+        <input type="text" name="name"><br>
+        <label>Email</label> -->
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+
 
 </body>
 </html>
