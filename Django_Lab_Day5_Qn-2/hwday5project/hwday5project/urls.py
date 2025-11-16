@@ -4,5 +4,5 @@ from hwday5app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.register, name = 'register')
+    path('', views.register, name='register'),
 ]
