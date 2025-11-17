@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Data</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>MOVIE FORM</h1>
+    <from action = "" method = "post">
+        {% csrf_token %}
+        <label>Enter the movie name: </label>
+        {{form.movie}}<br>
+        {{form.movie.errors}}
+        <label>Enter the release year: </label>
+        {{form.year}}<br>
+        {{form.year.errors}}
+        <input type="submit" value="submit">
+    </form>
+</body>
+
+</html>
