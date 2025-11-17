@@ -11,5 +11,3 @@ def movie_data(request):
     else:
         form = MovieForm()
     return render(request, 'movie_data.html', {'form': form})
-
-    
