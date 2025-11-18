@@ -9,7 +9,7 @@ def book(request):
             books = form.save()
             return render(request, 'saved_books.html',
                           {'message': 'Data saved to db', 
-                          'book_data':books})
+                          'book_data':Library.objects.all()})
     else:
         form = libraryForm()
     return render(request, 'index.html', {'form':form})
