@@ -7,16 +7,17 @@
 </head>
 <body>
     <h1>MOVIE FORM</h1>
-    <from action = "" method = "post">
+    <form action="" method="post">
         {% csrf_token %}
         <label>Enter the movie name: </label>
-        {{form.movie}}<br>
-        {{form.movie.errors}}
+        {{ form.movie_name }}<br>
+        {{ form.movie_name.errors }}
+
         <label>Enter the release year: </label>
-        {{form.year}}<br>
-        {{form.year.errors}}
+        {{ form.release_year }}<br>
+        {{ form.release_year.errors }}
+
         <input type="submit" value="submit">
     </form>
 </body>
-
 </html>

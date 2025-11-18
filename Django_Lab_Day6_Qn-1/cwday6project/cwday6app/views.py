@@ -3,10 +3,9 @@ from .forms import MovieForm
 
 def movie_data(request):
     if request.method == 'POST':
-        form = movie_data(request.POST)
+        form = MovieForm(request.POST)
         if form.is_valid():
-            
-            movie = form.save()       
+            movie = form.save()
             return render(request, 'success.html', {'movie': movie})
     else:
         form = MovieForm()
