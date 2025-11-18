@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title></title>
+</head>
 <body>
-<h1>Books</h1>
-<table border="1">
-    <tr>
-    <th>Title</th>
-    <th>Author</th></tr>
-{%for book in book_data %}
-    <tr>
-    <td>{{book.title}}</td>
-    <td>{{book.author}}</td>
-</tr>
-{%endfor%}
-</table>
-</body>
+    <p>{{ message }}</p>
+    <table>
+        <tr>
+            <td>id: </td>
+            <td>{{ book.id }}</td>
+        </tr>
+        <tr>
+            <td>title: </td>
+            <td>{{ book.title }}</td>
+        </tr>
+        <tr>
+            <td>author: </td>
+            <td>{{ book.author }}</td>
+        </tr>
+    </table>
+    </body>
 </html>
