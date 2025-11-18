@@ -41,20 +41,53 @@
 #     cust.save()
 #     return HttpResponse('Db table row created')
 
+# from django.shortcuts import render
+# from .forms import LoginForm
+# from .models import Customer
+# def greeting(request):
+#     if request.method == 'POST':
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             cust = Customer()
+#             cust.email = form.cleaned_data['email']
+#             cust.password = form.cleaned_data['password']
+#             cust.save()
+#             return render(request,'form-data.html',{
+#                  'message': 'Data saved to db'
+#             })
+#     else:
+#         form = LoginForm()
+#     return render(request,'index.html',{'form':form})
+
+# from django.shortcuts import render
+# from .forms import LoginModelForm
+# def greeting(request):
+#     if request.method == 'POST':
+#         form = LoginModelForm(request.POST)
+#         if form.is_valid():
+#             cust = form.save()
+#             return render(request,'form-data.html',{
+#                 'message': 'Data saved to db'            })
+#     else:
+#         form = LoginModelForm()
+#     return render(request,'index.html',{'form':form})
+
 from django.shortcuts import render
-from .forms import LoginForm
+from .forms import LoginModelForm
 from .models import Customer
+# def greeting(request):
+#     if request.method == 'POST':
+#         form = LoginModelForm(request.POST)
+#         if form.is_valid():
+#             cust = form.save()
+#             return render(request,'form-data.html',{
+#                 'message': 'Data saved to db',
+#                 'customer': cust
+#             })
+#     else:
+#         form = LoginModelForm()
+#     return render(request,'index.html',{'form':form})
+
 def greeting(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            cust = Customer()
-            cust.email = form.cleaned_data['email']
-            cust.password = form.cleaned_data['password']
-            cust.save()
-            return render(request,'form-data.html',{
-                 'message': 'Data saved to db'
-            })
-    else:
-        form = LoginForm()
-    return render(request,'index.html',{'form':form})
+    data = Customer.objects.all()
+    return render(request, 'index.html', {'data': data})

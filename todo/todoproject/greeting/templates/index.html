@@ -48,7 +48,7 @@
 </body>
 </html> -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 </head>
@@ -63,5 +63,24 @@
         <input type="password" name="password"><br>
         <input type="submit" value="Submit">
     </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h1>customers</h1>
+{{ data }}
+<table border="1">
+    <tr>
+    <th>email</th>
+    <th>password</th></tr>
+{%for customer in data %}
+    <tr>
+    <td>{{customer.email}}</td>
+    <td>{{customer.password}}</td>
+</tr>
+{%endfor%}
+</table>
 </body>
 </html>
