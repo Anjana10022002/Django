@@ -6,12 +6,12 @@
     <tr>
     <th>Title</th>
     <th>Author</th></tr>
-{%for book in book_data %}
+    {% for book in book_data %}
     <tr>
     <td>{{book.title}}</td>
     <td>{{book.author}}</td>
 </tr>
-{%endfor%}
+{% endfor %}
 </table>
 </body>
 </html>
