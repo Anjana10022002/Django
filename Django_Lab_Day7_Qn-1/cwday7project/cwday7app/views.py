@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from . import libraryForm
+from .forms import libraryForm
+from .models import Library
 
 def book(request):
     if request.method == 'POST':
@@ -12,3 +13,6 @@ def book(request):
     else:
         form = libraryForm()
     return render(request, 'index.html', {'form':form})
+def view_books(request):
+    books = Library.objects.all()
+    return render(request, 'saved_books.html', {'books': books})
