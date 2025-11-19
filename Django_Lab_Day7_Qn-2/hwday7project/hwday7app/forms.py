@@ -1,7 +1,7 @@
 from django import forms
 from .models import Customer
 
-class cust_details_form(forms.Modelform):
+class cust_details_form(forms.ModelForm):
     class Meta:
         model = Customer
-        feilds = ['name', 'email']
+        fields = ['name', 'email']
