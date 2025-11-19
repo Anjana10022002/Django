@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>customers</h1>
+<table border="1">
+    <tr>
+    <th>name</th>
+    <th>email</th></tr>
+{%for customer in data %}
+    <tr>
+    <td>{{customer.name}}</td>
+    <td>{{customer.email}}</td>
+</tr>
+{%endfor%}
+</table>
+</body>
+</html>
