@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from .models import Customer
 
-# Create your views here.
+def cus_deatils(request):
+    if request.method == 'POST':
+        from = 
+    cust = Customer()
