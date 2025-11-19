@@ -7,5 +7,5 @@ urlpatterns = [
     path('', views.cus_details, name='add_customers'),
     # path('add/', views.cus_deatils, name = 'add_customers'),
     path('all/', views.all_customers, name = 'all_customers'), 
-    path('filtered', views.filt_customers, name = 'filtered_customers')
+    path('filtered/', views.filt_customers, name = 'filtered_customers')
 ]

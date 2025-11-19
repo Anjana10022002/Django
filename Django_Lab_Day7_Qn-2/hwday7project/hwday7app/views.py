@@ -6,14 +6,15 @@ def cus_details(request):
     if request.method == 'POST':
         form = cust_details_form(request.POST)
         if form.is_valid():
-            form.save()
+            saved = form.save()
             return render(request, "user_details.html",
-                          {'message': 'User data saved to DB'})
+                          {'message': 'User data saved to DB',
+                           'customer': saved})
     else:
         form = cust_details_form()
 
     return render(request, "user_details.html", {'form': form})
-
+    
 
 def all_customers(request):
     cust = Customer.objects.all().order_by('name')
