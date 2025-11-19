@@ -1,3 +1,13 @@
+{% extends 'layout/app-layout.html'%}
+{% block content %}
+    <h1>Login</h1>
+    <form action="" method="POST">
+     {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
+
 <!-- <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +76,7 @@
 </body>
 </html> -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <body>
 <h1>customers</h1>
@@ -83,4 +93,23 @@
 {%endfor%}
 </table>
 </body>
-</html>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about-us">About Us</a>
+    </nav>
+    <h1>Login</h1>
+    <form action="" method="POST">
+     {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html> -->
+

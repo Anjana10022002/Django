@@ -1,5 +1,13 @@
+# from django.urls import path
+# from greeting import views
+# urlpatterns = [
+#   path('', views.greeting),
+# ]
+
+from django.contrib import admin
 from django.urls import path
 from greeting import views
 urlpatterns = [
-  path('', views.greeting)
+    path('', views.greeting,name='home'),
+    path('about-us', views.aboutUs,name='about-us')
 ]
