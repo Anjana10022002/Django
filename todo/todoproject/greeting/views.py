@@ -72,9 +72,9 @@
 #         form = LoginModelForm()
 #     return render(request,'index.html',{'form':form})
 
-from django.shortcuts import render
-from .forms import LoginModelForm
-from .models import Customer
+# from django.shortcuts import render
+# from .forms import LoginModelForm
+# from .models import Customer
 # def greeting(request):
 #     if request.method == 'POST':
 #         form = LoginModelForm(request.POST)
