@@ -1,9 +1,5 @@
 from django.shortcuts import render
 
 def student_list(request):
-    students = [
-        {'name': 'Alice', 'age': 20},
-        {'name': 'Bob', 'age': 22},
-        {'name': 'Charlie', 'age': 23},
-    ]
+    students = ['Alice', 'Bob', 'Charlie']
     return render(request, 'students/student_list.html', {'students': students})

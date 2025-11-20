@@ -1,8 +1,5 @@
 from django.shortcuts import render
 
-def teachers(request):
-    teachers = [
-        {"name": "Mr. Smith", "subject": "Math"},
-        {"name": "Ms. Johnson", "subject": "English"},
-        {"name": "Mr. Lee", "subject": "Science"},  
-    ]
+def teachers_list(request):
+    teachers = ["Mr. Smith", "Ms. Johnson", "Mr. Lee"]
+    return request(request, "teachers/teachers_list.html", {"teachers":teachers})
