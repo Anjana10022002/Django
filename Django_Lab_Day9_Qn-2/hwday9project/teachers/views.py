@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+def teachers(request):
+    teachers = [
+        {"name": "Mr. Smith", "subject": "Math"},
+        {"name": "Ms. Johnson", "subject": "English"},
+        {"name": "Mr. Lee", "subject": "Science"},  
+    ]
