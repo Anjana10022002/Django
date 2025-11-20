@@ -5,8 +5,10 @@
 </head>
 <body>
     <h1>Student List</h1>
-    {% for x in students %}
-        {{ students }}
-    {% endfor %}    
+    <ul>
+        {% for x in students %}
+            <li>{{ x }}</li>
+        {% endfor %}
+    </ul>    
 </body>
 </html>
