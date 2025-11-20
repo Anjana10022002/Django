@@ -23,4 +23,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('teachers/', include('teachers.urls')),
     path('students/', include('students.urls')),
+    path('form/', include('students.urls')),
 ] 
