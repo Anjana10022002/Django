@@ -13,7 +13,7 @@ def add_student(request):
         return redirect('student_list')
     return render(request,'add_student.html', {"students": students})
 
-def edit_students(request):
+def edit_students(request, id):
     student = student_record.objects.get(pk=id)
     if request.method == 'POST':
         form = studentform(request.POST,instance=student)
@@ -23,3 +23,6 @@ def edit_students(request):
     else:
         form =studentform(instance=student)           
     return render(request, 'update_student.html', {'form': form})
+
+def delete_student(request, id):
+    student = student_list.object.get(pk=pk)
