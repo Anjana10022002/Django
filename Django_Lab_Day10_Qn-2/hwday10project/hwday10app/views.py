@@ -21,5 +21,5 @@ def edit_students(request):
             form.save()
             return redirect('home')
     else:
-        form =ProductForm(instance=product)           
-    return render(request, 'update.html', {'form': form})
+        form =studentform(instance=student)           
+    return render(request, 'update_student.html', {'form': form})
