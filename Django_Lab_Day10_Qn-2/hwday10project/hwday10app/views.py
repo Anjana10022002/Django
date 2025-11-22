@@ -3,7 +3,9 @@ from .forms import studentform
 from .models import student_record
 
 def student_list(request):
-    
+    student = student_record.objects.all()
+    return render(request, 'student_list.html', {'students': student})
+
 
 def add_student(request):
     form = studentform(request.POST)
