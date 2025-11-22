@@ -26,3 +26,8 @@ def edit_students(request, id):
 
 def delete_student(request, id):
     student = student_list.object.get(pk=pk)
+    if request.method == 'POST':
+        student.delete()
+        return redirect('home')
+    
+    return render(request,'delete_student.html',{'product':product})
