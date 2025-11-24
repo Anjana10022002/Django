@@ -9,7 +9,8 @@ from django.urls import path
 from greeting import views
 urlpatterns = [
     # path('', views.greeting,name='home'),
-    # path('about-us/', views.aboutUs,name='about-us'),
-    path('', views.pagevisit, name='home'),
-    path('pagevisit/',views.pagevisit,name='page_visit')
+    path('aboutus/', views.aboutUs,name='about-us'),
+    path('pagevist/', views.pagevisit, name='home'),
+    path('signup/',views.signup_page,name='signup' ),
+    path('login/',views.login_page,name='login' ),  
 ]
