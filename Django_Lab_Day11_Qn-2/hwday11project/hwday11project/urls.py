@@ -21,5 +21,5 @@ from hwday11app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/', views.signup, name='signup'),
-    pa
+
 ]

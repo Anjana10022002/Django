@@ -14,4 +14,3 @@ def signup(request):
 def login(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
-S

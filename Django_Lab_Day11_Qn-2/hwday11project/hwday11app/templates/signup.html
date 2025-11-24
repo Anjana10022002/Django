@@ -8,10 +8,10 @@
 <body>
     {% include 'partials/navbar.html' %}
     <h1>Sign Up</h1>
-    <from method ='POST'>
-        {% csrf_tocken %}
+    <form method ='POST'>
+        {% csrf_token %}
         {{form.as_p}}
         <button type="submit">Sign up</button>
-    </from>
+    </form>
 </body>
 </html>
