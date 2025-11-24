@@ -10,7 +10,7 @@ def signup_page(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('createproduct')
+            return redirect('login')
     else:
         form = UserCreationForm()
     return render(request, "signup.html", {"form": form})
@@ -21,14 +21,31 @@ def login_page(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('home')
+            return redirect('welcome')
     else:
         form = AuthenticationForm()
 
     return render(request, 'login.html', {'form':form})
 
 @login_required(login_url='/login/')
-def logout_page(requqest):
+def logout_page(request):
+    if request.method =='POST':
+        logout(request)
+        return redirect('home')
+    context = {
+        'user': request.user
+    }
+    return render(request, 'logout.html', context)
+
+@login_required(login_url='/login/')
+def welcome_page(request):
+    return render(request, 'welcome.html')
+def page_visit(request):
+    count = request.session.get('page_count', 0)
+    count +=1
+    request.session['page_count'] = count
+    return render(request, 'pageview.html', {'count':count})
+
     
 
 

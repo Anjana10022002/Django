@@ -22,6 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_page, name='home'),
     path('signup/', views.signup_page, name='signup'),
-    path('login/', views.login_page, name = 'login')
-
+    path('login/', views.login_page, name = 'login'),
+    path('logout/', views.logout_page, name = 'logout'),
+    path('welcome/', views.welcome_page, name = 'welcome'),
+    path('/pagecount/', views.page_visit, name ='pagevisit')
 ]
