@@ -1,13 +1,14 @@
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token 
 from django.views.decorators.csrf import csrf_exempt
 from .models import Note
+from .serializers import NoteSerializer
 
 @api_view(['POST'])
 @permission_classes((AllowAny,))
@@ -34,7 +35,7 @@ def login(request):
 
 @csrf_exempt
 @api_view(["POST"])
-@permission_classes((AllowAny,))
+@permission_classes((IsAuthenticated))
 def add_note(request):
     title = request.POST.get("title")
     message = request.POST.get("message")
@@ -44,3 +45,11 @@ def add_note(request):
     if not note:
         return Response({'error':'Invalid data'}, status=status.HTTP_404_NOT_FOUND)
     return Response({'title':note.title, 'message':note.message},status=status.HTTP_201_CREATED)
+
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def note_list(request):
+    note = Note.objects.all()
+    serializer = NoteSerializer(note, many=True)
+    return Response(serializer.data)
