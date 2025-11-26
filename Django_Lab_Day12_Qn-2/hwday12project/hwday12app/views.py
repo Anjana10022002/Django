@@ -35,3 +35,9 @@ def login(request):
     return Response({'username': username, 'token': token.key}, status=HTTP_200_OK)
 
 
+@api_view(["GET"])
+@permission_classes((AllowAny,))
+def products(request):
+    products = [
+        
+    ]
