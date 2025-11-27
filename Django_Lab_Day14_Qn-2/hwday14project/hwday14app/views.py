@@ -30,3 +30,5 @@ def generate_pdf(request, pk):
         response = HttpResponse(buffer.getvalue(), content_type = 'application/pdf')
         response['Content-Disposition'] = 'attachment; filename="{}.pdf"'.format(product.name)
         return response
+    
+    
