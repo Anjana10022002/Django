@@ -9,7 +9,7 @@
     <h1>Create product</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ from.as_p }}
+        {{ form.as_p }}
         <button type="submit">Submit</button>
     </form>
 </body>
