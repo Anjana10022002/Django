@@ -7,6 +7,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from greeting import views
+from products import views
 # urlpatterns = [
 #     # path('', views.greeting,name='home'),
 #     path('aboutus/', views.aboutUs,name='about-us'),
@@ -15,5 +16,8 @@ from greeting import views
 #     path('login/',views.login_page,name='login' ),
 # ]
 urlpatterns = [
+    path('create_products/', views.product_create, name='createproductapi'),
     path('productsapi/', include('productsapi.urls')),
+    path('products/', include('products.urls')),
+    path('admin/', admin.site.urls),
 ]  

@@ -79,6 +79,13 @@ TEMPLATES = [
     },
 ]
 
+# Looking to send emails in production? Check out our Email API/SMTP product!
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '77048554fa30c0'
+EMAIL_HOST_PASSWORD = '0a518c99024c73'
+EMAIL_PORT = '2525'
+
 WSGI_APPLICATION = 'todoproject.wsgi.application'
 
 

@@ -9,6 +9,7 @@ from rest_framework.authtoken.models import Token
 from django.views.decorators.csrf import csrf_exempt
 from .models import Note
 from .serializers import NoteSerializer
+from . import productForm
 
 @api_view(['POST'])
 @permission_classes((AllowAny,))
@@ -53,3 +54,22 @@ def note_list(request):
     note = Note.objects.all()
     serializer = NoteSerializer(note, many=True)
     return Response(serializer.data)
+
+
+
+
+
+csrf_exempt
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def create_product(request):
+    form = productForm(request.POST)
+    if form.is_valid():
+        product = form.save()
+        return Response(status=status.HTTP_201_CREATED)
+    return Response(form.error, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+@permission_classes((AllowAny))
+
+
