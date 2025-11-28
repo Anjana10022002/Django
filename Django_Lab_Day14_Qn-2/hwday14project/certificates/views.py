@@ -19,4 +19,13 @@ def certificate_create(request):
 
 def download_pdf(request):
     certificate = get_object_or_404(certificate)
-    template = get_template('')
+    template = get_template('certificate_pdf.html')
+    html = template.render({'certificate':certificate})
+    buffer = BytesIO()
+    pisa_status = pisa.CreatePDF(html, dest = buffer)
+    if pisa_status.err:
+        return HttpResponse('PDF creation error.')
+    else:
+        response = HttpResponse(buffer.getvalue(), content_type = 'application/pdf')
+        response['Content-Disposition']= 'attachment; filname="{}.pdf"'.format(certificate.name)
+        return response
