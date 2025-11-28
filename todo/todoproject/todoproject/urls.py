@@ -20,4 +20,6 @@ urlpatterns = [
     path('productsapi/', include('productsapi.urls')),
     path('products/', include('products.urls')),
     path('admin/', admin.site.urls),
+    path('', views.product_create, name='root'),
+
 ]  
