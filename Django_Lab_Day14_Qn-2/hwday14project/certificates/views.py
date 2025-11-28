@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 from io import BytesIO
-from .models import CertificateForm
+from .models import Certificate
 
 def certificate_create(request):
     if request.method == 'POST':
@@ -18,7 +18,7 @@ def certificate_create(request):
         return render(request, 'certificate_create.html', {'form':form})
 
 def download_pdf(request):
-    certificate = get_object_or_404(certificate)
+    certificate = get_object_or_404(Certificate)
     template = get_template('certificate_pdf.html')
     html = template.render({'certificate':certificate})
     buffer = BytesIO()
