@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hwday14app',
-    'filemaker',    
+    'filemaker', 'certificates',
 ]
 
 MIDDLEWARE = [
