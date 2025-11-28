@@ -68,6 +68,13 @@ TEMPLATES = [
     },
 ]
 
+# Looking to send emails in production? Check out our Email API/SMTP product!
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '77048554fa30c0'
+EMAIL_HOST_PASSWORD = '0a518c99024c73'
+EMAIL_PORT = '2525'
+
 WSGI_APPLICATION = 'hwday14project.wsgi.application'
 
 
@@ -76,11 +83,14 @@ WSGI_APPLICATION = 'hwday14project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hwday14_db',#Name of the database created for this project
+        'USER': 'root',#Enter your mysql username
+        'PASSWORD': '',#Enter your mysql password
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
