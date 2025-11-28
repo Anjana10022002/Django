@@ -22,3 +22,7 @@ urlpatterns = [
     path('', include('hwday14app.urls')),
 
 ]
+
+urlpatterns += [
+    path('fileupload/', include('filemaker.urls')),
+]

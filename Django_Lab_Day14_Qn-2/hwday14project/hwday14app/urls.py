@@ -10,3 +10,7 @@ urlpatterns = [
     path('product/<int:pk>/', views.product_detail, name='product_details'),
     path('product/<int:pk>/email/', views.send_product_email, name='send_email'),
 ]
+
+# urlpatterns += [
+#     path('fileupload/', include('profilemaker.urls')),
+# ]
