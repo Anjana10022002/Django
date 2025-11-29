@@ -35,13 +35,12 @@ def download_pdf(request,pk):
         response['Content-Disposition']= 'attachment; filname="{}.pdf"'.format(certificate.name)
         return response
     
-def send_mail(request):
-    def send_product_email(request,pk):
-        certificate =Certificate.objects.get(pk=pk)
-        subject = f"New Product: {certificate.name}"
-        from_email = "pranjana333@gmail.com"
-        recipient_list = ["your_mailtrap_inbox@mailtrap.io"]
-        html_message = render_to_string('certificate_email.html', {'certificate': certificate})
-        plain_message = strip_tags(html_message)
-        send_mail(subject, plain_message, from_email, recipient_list, html_message=html_message)
-        return HttpResponse('Email sent successfully')
+def send_certificate_email(request, pk):
+    certificate = Certificate.objects.get(pk=pk)
+    subject = 'Certificate Details: {}'.format(certificate.name)
+    from_email = 'pranjana333@gmail.com'
+    recipient_list = ['recipient@example.com'] 
+    html_message = render_to_string('certificate_email.html', {'certificate': certificate})
+    plain_message = strip_tags(html_message)
+    send_mail(subject, plain_message, from_email, recipient_list, html_message=html_message)
+    return HttpResponse('Email sent successfully')
