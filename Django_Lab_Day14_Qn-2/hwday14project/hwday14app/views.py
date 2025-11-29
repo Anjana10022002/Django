@@ -43,7 +43,7 @@ def send_product_email(request, pk):
     product = Product.objects.get(pk=pk)
     subject = 'Product Details: {}'.format(product.name)
     from_email = 'pranjana333@gmail.com'
-    recipient_list = ['recipient@example.com']  # Replace with the recipient's email address    
+    recipient_list = ['recipient@example.com'] 
     html_message = render_to_string('product_email.html', {'product': product})
     plain_message = strip_tags(html_message)
     send_mail(subject, plain_message, from_email, recipient_list, html_message=html_message)

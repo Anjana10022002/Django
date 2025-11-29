@@ -1,3 +1,4 @@
+from itertools import product
 from django.shortcuts import render, redirect
 from .forms import CertificateForm
 from django.shortcuts import get_object_or_404, render
@@ -6,6 +7,10 @@ from django.template.loader import get_template
 from xhtml2pdf import pisa
 from io import BytesIO
 from .models import Certificate
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.core.mail import send_mail
+from django.shortcuts import render
 
 def certificate_create(request):
     if request.method == 'POST':
@@ -29,3 +34,14 @@ def download_pdf(request,pk):
         response = HttpResponse(buffer.getvalue(), content_type = 'application/pdf')
         response['Content-Disposition']= 'attachment; filname="{}.pdf"'.format(certificate.name)
         return response
+    
+def send_mail(request):
+    def send_product_email(request,pk):
+        certificate =Certificate.objects.get(pk=pk)
+        subject = f"New Product: {certificate.name}"
+        from_email = "pranjana333@gmail.com"
+        recipient_list = ["your_mailtrap_inbox@mailtrap.io"]
+        html_message = render_to_string('certificate_email.html', {'certificate': certificate})
+        plain_message = strip_tags(html_message)
+        send_mail(subject, plain_message, from_email, recipient_list, html_message=html_message)
+        return HttpResponse('Email sent successfully')
