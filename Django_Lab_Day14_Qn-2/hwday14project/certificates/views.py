@@ -11,14 +11,14 @@ def certificate_create(request):
     if request.method == 'POST':
         form = CertificateForm(request.POST)
         if form.is_valid():
-            form.save()
+            certificate = form.save()
             return redirect('cert_details.html')
     else:
         form = CertificateForm()
-        return render(request, 'certificate_create.html', {'form':form})
+    return render(request, 'certificate_create.html', {'form':form})
 
-def download_pdf(request):
-    certificate = get_object_or_404(Certificate)
+def download_pdf(request,pk):
+    certificate = get_object_or_404(Certificate,pk=pk)
     template = get_template('certificate_pdf.html')
     html = template.render({'certificate':certificate})
     buffer = BytesIO()
