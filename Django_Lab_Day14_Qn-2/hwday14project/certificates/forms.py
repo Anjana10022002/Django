@@ -1,7 +1,7 @@
 from django import forms
-from .models import certificates
+from .models import Certificate
 
 class CertificateForm(forms.ModelForm):
     class Meta:
-        model = certificates
+        model = Certificate
         fields = '__all__'
