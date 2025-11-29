@@ -9,8 +9,8 @@
     <h1>Create certificate</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ from.as_p }}
-        <button type="submit">Submit</button>
+        {{ form.as_p }}
+        <button type="submit">Create certificate</button>
     </form>
 </body>
 </html>
