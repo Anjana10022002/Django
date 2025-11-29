@@ -17,10 +17,14 @@ def certificate_create(request):
         form = CertificateForm(request.POST)
         if form.is_valid():
             certificate = form.save()
-            return redirect('cert_details.html')
+            return redirect('cert_details.html', pk=certificate.pk)
     else:
         form = CertificateForm()
     return render(request, 'certificate_create.html', {'form':form})
+
+def cert_details_view(request, pk):
+    certificate = get_object_or_404(Certificate, pk=pk)
+    return render(request, 'cert_details.html', {'certificate': certificate})
 
 def download_pdf(request,pk):
     certificate = get_object_or_404(Certificate,pk=pk)
