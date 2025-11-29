@@ -17,7 +17,7 @@ def certificate_create(request):
         form = CertificateForm(request.POST)
         if form.is_valid():
             certificate = form.save()
-            return redirect('cert_details.html', pk=certificate.pk)
+            return redirect('cert_details', pk=certificate.pk)
     else:
         form = CertificateForm()
     return render(request, 'certificate_create.html', {'form':form})

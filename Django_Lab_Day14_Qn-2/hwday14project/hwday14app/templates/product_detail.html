@@ -9,7 +9,7 @@
     <h1>Product Details</h1>
     <p>Product ID: {{ product.id }}</p>
     <p>Product Name: {{ product.name }}</p>
-    <p>Product Price: {{ product.price }}</p>
+    <p>Product Date: {{ product.date }}</p>
     <a href="{% url 'generate_pdf' product.pk %}">
         <button>Download as PDF</button>
     </a>

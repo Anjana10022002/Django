@@ -6,7 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="{% url 'generate_pdf' %}"><button>Download the certificate</button></a>
-    <a href="{% url 'send_email' %}"><button>Send mail</button></a>
+    <h1>Certificate Details</h1>
+    <p>Certificate ID: {{ certificate.id }}</p>
+    <p>Certificate Name: {{ certificate.name }}</p>
+    <p>Certificate Date: {{ certificate.date }}</p>
+    <a href="{% url 'download_pdf' certificate.pk %}"><button>Download the certificate</button></a>
+    <a href="{% url 'send_certificate_email' certificate.pk %}"><button>Send mail</button></a>
 </body>
 </html>
