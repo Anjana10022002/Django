@@ -31,16 +31,15 @@ def login_page(request):
         form = AuthenticationForm()
     return render(request, 'login.html', {'form':form})
 
-@login_required
+@login_required(login_url='login')
 def home_page(request):
     urls = URLShortner.objects.filter(user=request.user)
     return render(request, "home.html", {"urls": urls})
 
-
 def generate_url():
     return ''.join(random.choices(string.ascii_letters + string.digits, k=6))
-
-@login_required   
+    
+@login_required(login_url='login')   
 def add_url(request):
     if URLShortner.objects.filter(user=request.user).count() >= 5:
         messages.error(request, "Limit reached: You can add only 5 URLs.")
@@ -57,7 +56,8 @@ def add_url(request):
     else:
         form = URLForm()
     return render(request, 'add_url.html', {'form':form})
-        
+
+@login_required(login_url='login')        
 def url_list(request):
     urls = URLShortner.objects.filter(user=request.user).order_by('-time')
     query = request.GET.get('q')
@@ -90,9 +90,10 @@ def delete_url(request, id):
         return redirect('url_list')
     return render(request, 'delete_url.html', {'url': url})
 
-@login_required
+@login_required(login_url='login')
 def logout_page(request):
     if request.method == 'POST':
         logout(request)
+        messages.success(request, "Logged out successfully.")   
         return redirect('login')
     return render(request, 'logout.html')

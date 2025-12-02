@@ -4,24 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .success { color: green; }
-        .error { color: red; }
-    </style>
-
 </head>
 <body>
-    {% include 'partials/header.html' %}
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
 
-
-    <!-- <a href="{% url 'add' %}">Add New URL</a>
-    <a href="{% url 'url_list' %}">View URL List</a> -->
+    <a href="{% url 'add' %}">Add New URL</a>
+    <a href="{% url 'url_list' %}">View URL List</a>
 </body>
 </html>
