@@ -3,88 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Login</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Poppins", sans-serif;
-            background: linear-gradient(135deg, #6C63FF, #A993FF);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            background: #ffffff;
-            padding: 35px 40px;
-            border-radius: 14px;
-            width: 380px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 25px;
-            color: #4b3ea3;
-            font-weight: 700;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 13px;
-            border-radius: 5px;
-            border: 1px solid #bcb8ff;
-            margin-bottom: 14px;
-            font-size: 15px;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #6C63FF;
-            box-shadow: 0 0 6px rgba(108, 99, 255, 0.4);
-        }
-
-        button {
-            width: 100%;
-            padding: 13px;
-            background: #6C63FF;
-            border: none;
-            font-size: 18px;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        button:hover {
-            background: #584dcb;
-        }
-
-        .signup-link {
-            text-align: center;
-            margin-top: 14px;
-            font-size: 15px;
-        }
-
-        .signup-link a {
-            color: #6C63FF;
-            font-weight: 600;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>URL SHORTNER</h1><br>
-        <h2 style="text-align: center;">Login Form</h2>
+    <body class="center-page">
+    <h1>URL SHORTNER</h1>
+    <div class="auth-box">
+        <h2 style="text-align:center; margin-bottom:15px; color: navy;">Login</h2>
         <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p}}
-        <button type="submit">Log in</button>
-    </form>
-    <p style="text-align: center;">Don't have an account? <a href="{% url 'signup' %}">Sign up here</a></p> 
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Log in</button>
+        </form>
+        <p class="signup-link">Don't have an account?
+            <a href="{% url 'signup' %}">Sign up</a>
+        </p>
+    </div>
 </body>
 </html>

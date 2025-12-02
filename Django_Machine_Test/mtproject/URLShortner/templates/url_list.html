@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Document</title>
 </head>
 <body>
     {% include 'partials/header.html' %}
     <h1>URL List</h1>
-    <form method="GET" action="{% url 'url_list' %}">
-    <input type="text" name="q" placeholder="Search by title or short URL" value="{{ query|default:'' }}">
-    <button type="submit">Search</button>
-</form>
+    <form method="GET" action="{% url 'url_list' %}" class="search-box">
+        <input type="text" name="q" placeholder="Search by title or short URL" value="{{ query|default:'' }}">
+        <button type="submit">Search</button>
+    </form>
 
     <table border="1">
         <tr>
             <th>Title</th>
             <th>Short URL</th>
             <th>Added time</th>
+            <th colspan="2">Action</th>
         </tr>
         {% for x in page_obj %}
         <tr>
@@ -30,7 +33,7 @@
 
         {% endfor %}    
     </table>
-    <nav aria-label="Page navigation">
+    <nav aria-label="Page navigation" class="paginator">
         {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; First</a>
             <a href="?page={{ page_obj.previous_page_number }}">&lsaquo; Prev</a>
