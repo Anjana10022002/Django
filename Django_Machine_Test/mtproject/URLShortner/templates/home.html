@@ -4,10 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f4f3ff;
+        }
+
+        .message-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+
 </head>
 <body>
-
-    <a href="{% url 'add' %}">Add New URL</a>
-    <a href="{% url 'url_list' %}">View URL List</a>
+    {% include 'partials/header.html' %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 </body>
-</html>
+</html> 
