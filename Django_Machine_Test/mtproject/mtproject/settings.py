@@ -36,8 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'URLShortener',
+    'django.contrib.staticfiles', 
+    'URLShortner',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'mtproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'URLShortner_db',#Name of the database created for this project
+        'USER': 'root',#Enter your mysql username
+        'PASSWORD': '',#Enter your mysql password
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

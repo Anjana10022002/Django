@@ -1,5 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login
+from .forms import URLForm
+from .models import URLShortner
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+import random, string
 
 def signup_page(request):
     if request.method =='POST':
@@ -11,3 +17,41 @@ def signup_page(request):
         form = UserCreationForm()
     return render(request, 'signup.html', {'form':form})
                 
+def login_page(request):
+    if request.method =='POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('home')
+        else:
+            form = AuthenticationForm()
+        return render(request, 'login.html', {'form':form})
+
+@login_required
+def home_page(request):
+    urls = URLShortner.objects.filter(user=request.user)
+    return render(request, "home.html", {"urls": urls})
+
+
+def generate_url():
+    return ''.join(random.choices(string.ascii_letters + string.digits, k=6))
+
+@login_required   
+def add_url(request):
+    if URLShortner.objects.filter(user=request.user).count() > 5:
+        messages.error(request, "Limit reached: You can add only 5 URLs.")
+        return redirect('home')
+    if request.method == 'POST':
+        form = URLForm(request.POST)
+        if form.is_valid():
+            url = form.save(commit=False)
+            url.user = request.user
+            url.short_url = generate_url()
+            url.save()
+            messages.success(request, "URL added successfully.")
+            return redirect('home')
+    else:
+        form = URLForm()
+    return render(request, 'add_url.html', {'form':form})
+        
