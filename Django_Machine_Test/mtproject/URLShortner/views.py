@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 import random, string
 from django.core.paginator import Paginator
-
+from django.db.models import Q
 
 def signup_page(request):
     if request.method =='POST':
@@ -41,7 +41,7 @@ def generate_url():
 
 @login_required   
 def add_url(request):
-    if URLShortner.objects.filter(user=request.user).count() > 5:
+    if URLShortner.objects.filter(user=request.user).count() >= 5:
         messages.error(request, "Limit reached: You can add only 5 URLs.")
         return redirect('home')
     if request.method == 'POST':
@@ -59,8 +59,32 @@ def add_url(request):
         
 def url_list(request):
     urls = URLShortner.objects.filter(user=request.user).order_by('-time')
+    query = request.GET.get('q')
+    if query:
+        urls = urls.filter(
+            Q(title__icontains=query) | Q(short_url__icontains=query)
+        )
     paginator = Paginator(urls, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     elided_range = paginator.get_elided_page_range(page_obj.number)
     return render(request, 'url_list.html', {'page_obj': page_obj, 'elided_range': elided_range})
+
+def edit_url(request,id):
+    url = URLShortner.objects.get(id=id, user=request.user) 
+    if request.method == 'POST':
+        form = URLForm(request.POST, instance=url)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "URL updated successfully.")
+            return redirect('url_list')
+    else:
+        form = URLForm(instance=url)
+    return render(request, 'edit_url.html', {'form': form})
+
+def delete_url(request, id):
+    url = URLShortner.objects.get(id=id, user=request.user)
+    if request.method == 'POST':
+        url.delete()
+        return redirect('url_list')
+    return render(request, 'delete_url.html', {'url': url})
