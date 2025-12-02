@@ -8,6 +8,7 @@ from django.contrib import messages
 import random, string
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.contrib.auth import logout
 
 def signup_page(request):
     if request.method =='POST':
@@ -88,3 +89,10 @@ def delete_url(request, id):
         url.delete()
         return redirect('url_list')
     return render(request, 'delete_url.html', {'url': url})
+
+@login_required
+def logout_page(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('login')
+    return render(request, 'logout.html')

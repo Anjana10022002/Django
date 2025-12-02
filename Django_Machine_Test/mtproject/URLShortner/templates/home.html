@@ -11,6 +11,7 @@
 
 </head>
 <body>
+    {% include 'partials/header.html' %}
     {% if messages %}
         <ul>
             {% for message in messages %}
@@ -20,7 +21,7 @@
     {% endif %}
 
 
-    <a href="{% url 'add' %}">Add New URL</a>
-    <a href="{% url 'url_list' %}">View URL List</a>
+    <!-- <a href="{% url 'add' %}">Add New URL</a>
+    <a href="{% url 'url_list' %}">View URL List</a> -->
 </body>
 </html>
