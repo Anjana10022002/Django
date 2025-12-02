@@ -6,6 +6,8 @@ from .models import URLShortner
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 import random, string
+from django.core.paginator import Paginator
+
 
 def signup_page(request):
     if request.method =='POST':
@@ -56,5 +58,9 @@ def add_url(request):
     return render(request, 'add_url.html', {'form':form})
         
 def url_list(request):
-    urls = URLShortner.objects.all()
-    return render(request, 'url_list.html', {'urls': urls})
+    urls = URLShortner.objects.filter(user=request.user).order_by('-time')
+    paginator = Paginator(urls, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    elided_range = paginator.get_elided_page_range(page_obj.number)
+    return render(request, 'url_list.html', {'page_obj': page_obj, 'elided_range': elided_range})
