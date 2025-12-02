@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>URL List</h1>
+    <table border="1">
+        <tr><th>Title</th></tr>
+        <tr><th>Short URL</th></tr>
+        <tr><th>Added time</th></tr>
+        {% for x in url_list %}
+        <tr><td>{{x.title}}</td></tr>
+        <tr><td>{{x.short_url}}</td></tr>
+        <tr><td>{{x.time}}</td></tr>
+        {% endfor %}    
+    </table>
+</body>
+</html>

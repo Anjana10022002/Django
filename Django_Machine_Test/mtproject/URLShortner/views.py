@@ -24,9 +24,9 @@ def login_page(request):
             user = form.get_user()
             login(request, user)
             return redirect('home')
-        else:
-            form = AuthenticationForm()
-        return render(request, 'login.html', {'form':form})
+    else:
+        form = AuthenticationForm()
+    return render(request, 'login.html', {'form':form})
 
 @login_required
 def home_page(request):
@@ -55,3 +55,6 @@ def add_url(request):
         form = URLForm()
     return render(request, 'add_url.html', {'form':form})
         
+def url_list(request):
+    urls = URLShortner.objects.all()
+    return render(request, 'url_list.html', {'urls': urls})
