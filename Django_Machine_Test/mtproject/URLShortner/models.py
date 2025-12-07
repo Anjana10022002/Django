@@ -7,3 +7,5 @@ class URLShortner(models.Model):
     url = models.URLField()
     short_url = models.CharField(max_length=50, unique=True)
     time = models.DateTimeField(auto_now_add=True)
+
+    
