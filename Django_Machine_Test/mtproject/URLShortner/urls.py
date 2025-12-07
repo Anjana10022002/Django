@@ -9,5 +9,7 @@ urlpatterns = [
     path('urls/', views.url_list, name='url_list'),
     path('edit/<int:id>/', views.edit_url, name='edit_url'),
     path('delete/<int:id>/', views.delete_url, name='delete_url'),  
-    path('logout/', views.logout_page, name='logout'),  
+    path('logout/', views.logout_page, name='logout'),
+    path('urls/<str:code>/', views.redirect_url, name='redirect_url'),  
 ]
+

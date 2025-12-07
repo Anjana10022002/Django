@@ -11,7 +11,7 @@
     {% include 'partials/header.html' %}
     <h1>URL List</h1>
     <form method="GET" action="{% url 'url_list' %}" class="search-box">
-        <input type="text" name="q" placeholder="Search by title or short URL" value="{{ query|default:'' }}">
+        <input type="text" name="search_box" placeholder="Search by title or short URL" value="{{ query|default:'' }}">
         <button type="submit">Search</button>
     </form>
 

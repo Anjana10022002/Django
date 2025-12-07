@@ -9,6 +9,8 @@ import random, string
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib.auth import logout
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
 
 def signup_page(request):
     if request.method =='POST':
@@ -54,13 +56,14 @@ def add_url(request):
             messages.success(request, "URL added successfully.")
             return redirect('home')
     else:
+        
         form = URLForm()
     return render(request, 'add_url.html', {'form':form})
 
 @login_required(login_url='login')        
 def url_list(request):
     urls = URLShortner.objects.filter(user=request.user).order_by('-time')
-    query = request.GET.get('q')
+    query = request.GET.get('search_box')
     if query:
         urls = urls.filter(
             Q(title__icontains=query) | Q(short_url__icontains=query)
@@ -68,9 +71,9 @@ def url_list(request):
     paginator = Paginator(urls, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    elided_range = paginator.get_elided_page_range(page_obj.number)
-    return render(request, 'url_list.html', {'page_obj': page_obj, 'elided_range': elided_range})
+    return render(request, 'url_list.html', {'page_obj': page_obj})
 
+@login_required(login_url='login')
 def edit_url(request,id):
     url = URLShortner.objects.get(id=id, user=request.user) 
     if request.method == 'POST':
@@ -83,6 +86,7 @@ def edit_url(request,id):
         form = URLForm(instance=url)
     return render(request, 'edit_url.html', {'form': form})
 
+@login_required(login_url='login')
 def delete_url(request, id):
     url = URLShortner.objects.get(id=id, user=request.user)
     if request.method == 'POST':
@@ -97,3 +101,8 @@ def logout_page(request):
         messages.success(request, "Logged out successfully.")   
         return redirect('login')
     return render(request, 'logout.html')
+
+@login_required(login_url='login')
+def redirect_url(request, code):
+    url_obj = get_object_or_404(URLShortner, short_url=code)
+    return HttpResponseRedirect(url_obj.url)

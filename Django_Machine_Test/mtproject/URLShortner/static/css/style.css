@@ -53,12 +53,13 @@ h1, h2 {
 input[type="text"],
 input[type="password"],
 input[type="url"] {
-    width: 100%;
+    width: calc(100% - 26px);
     padding: 12px;
     border-radius: 7px;
     border: 1px solid #bcb8ff;
     margin-bottom: 16px;
     font-size: 15px;
+
 }
 input:focus {
     outline: none;
