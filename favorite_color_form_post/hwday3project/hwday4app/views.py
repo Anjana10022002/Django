@@ -13,3 +13,4 @@ def result(request):
             "data": request.POST
         })
     return render(request, "index.html")
+
